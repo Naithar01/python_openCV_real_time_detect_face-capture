@@ -33,14 +33,17 @@ def Detect_Face():
 
         cv2.destroyWindow("draw_show") # 키를 입력받는 동시에 네모가 그려진 이미지를 지움
 
-        if key == 's': # 입력받은 키가 s면 이미지 저장 ( 특정 부분만 잘라서 ) # s가 아니면 아무 동작도 X 
-
-            if draw_image_width - (x + w + 20) > 0 and draw_image_height - (y + h + 20) > 0 and draw_image_width < (x + w + 20) and draw_image_height < y + h + 20 :
+        if key == 's': # 입력받은 키가 s면 이미지 저장 ( 특정 부분만 잘라서 ) # 대문자 S면 이미지 전체 저장 # s가 아니면 아무 동작도 X 
+            if draw_image_width - (x + w + 20) > 0 and draw_image_height - (y + h + 20) > 0 and draw_image_width > (x + w + 20) and draw_image_height > y + h + 20 :
                 slice_draw_image = draw_image[y - 20: y + h + 20, x - 20 : x + w + 20]
                 cv2.imwrite(save_as_drwa_img_path + str((x + y + w + h)) + ".jpg", slice_draw_image)
             else:
                 slice_draw_image = draw_image[y: y + h, x : x + w]
                 cv2.imwrite(save_as_drwa_img_path + str((x + y + w + h)) + ".jpg", slice_draw_image)
+
+        if key == 'S':
+            cv2.imwrite(save_as_drwa_img_path + str((x + y + w + h)) + ".jpg", draw_image)
+
             
 
 def Show_Capture_Face_Image():
