@@ -78,7 +78,7 @@ def Show_Capture_Face_Image():
 while (True):
     _, cam_image = vid.read()  # vid 변수에는 캠이 담겨있는데 캠이 담고있는 이미지를 cam_image 변수에 담음
 
-    cam_image = cv2.flip(cam_image, 2)  # 이미지를 좌우반전
+    cam_image = cv2.flip(cam_image, 2)  # 이미지를 좌우반전 | x축 혹은 y축을 기준으로 뒤집기 혹은 x, y 축을 기준으로 뒤집기
 
     cv2.imshow('cam', cam_image)  # 좌우반전한 이미지를 보여줌
 
